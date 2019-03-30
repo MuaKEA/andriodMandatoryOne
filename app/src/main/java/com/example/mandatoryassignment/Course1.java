@@ -72,44 +72,38 @@ public class Course1 extends AppCompatActivity implements RatingBar.OnRatingBarC
 
         sendbutton=findViewById(R.id.sendbutton);
 
-
-
     }
-
-
 
     @Override
     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser)   {
-
-
-        switch (ratingBar.getId()){
+         switch (ratingBar.getId()){
 
             case R.id.ratingBar1:
 
-                StarRatingtxt1.setText(String.valueOf(rating));
+                StarRatingtxt1.setText(String.valueOf(rating *10 ));
                 Log.d("step size =", score.toString());
                 break;
 
             case R.id.ratingBar2:
-                StarRatingtxt2.setText(String.valueOf(rating));
+                StarRatingtxt2.setText(String.valueOf(rating *10 ));
                 break;
 
             case R.id.ratingBar3:
 
-                StarRatingtxt3.setText(String.valueOf(rating));
+                StarRatingtxt3.setText(String.valueOf(rating *10 ));
                 break;
 
             case R.id.ratingBar4:
 
-                StarRatingtxt4.setText(String.valueOf(rating));
+                StarRatingtxt4.setText(String.valueOf(rating *10 ));
                 break;
 
             case R.id.ratingBar5:
-                StarRatingtxt5.setText(String.valueOf(rating));
+                StarRatingtxt5.setText(String.valueOf(rating * 10));
                 break;
 
                 case R.id.ratingBar6:
-                    StarRatingtxt6.setText(String.valueOf(rating));
+                    StarRatingtxt6.setText(String.valueOf(rating * 10));
                 break;
         }
 
@@ -121,9 +115,7 @@ public class Course1 extends AppCompatActivity implements RatingBar.OnRatingBarC
     sendmail();
 
 
-
     }
-
     private void sendmail() {
         String[] TO = {"altair2400@gmail.com"};
         String[] CC = {""};
@@ -145,8 +137,7 @@ public class Course1 extends AppCompatActivity implements RatingBar.OnRatingBarC
         }
     }
 
-
-    public String averagescore() {
+     public String averagescore() {
         score=StarRating1.getRating();
         score=score + StarRating1.getRating();
         score=score + StarRating2.getRating();
