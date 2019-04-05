@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             Log.d("method passwordchecker",serverresponse);
 
 
-            if(remember_Checkbox.isChecked() && serverresponse.equals(String.valueOf(202))){
+            if(remember_Checkbox.isChecked() && serverresponse.equals(String.valueOf(200))){
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putString("username", Email.getText().toString());
@@ -90,7 +90,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 editor.apply();
                 startActivity(intent);
 
-            }else if(serverresponse.equals(String.valueOf(202))){
+            }else if(serverresponse.equals(String.valueOf(200))){
                 startActivity(intent);
 
 
