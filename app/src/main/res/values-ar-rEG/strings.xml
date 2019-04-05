@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mandatoryassignment</string>
+    <string name="welcome_message">مرحبًا ، الرجاء تسجيل الدخول أو التسجيل للانضمام إلى النادي</string>
+    <string name="register">تسجيل</string>
+    <string name="pass_word">كلمه السر</string>
+    <string name="email">البريد الإلكتروني</string>
+</resources>

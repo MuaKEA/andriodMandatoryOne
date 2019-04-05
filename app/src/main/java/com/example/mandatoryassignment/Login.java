@@ -1,6 +1,6 @@
 package com.example.mandatoryassignment;
-
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getData();
         startup();
 
         Bundle extras = getIntent().getExtras();
@@ -53,10 +54,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
 
             case R.id.Sign_in:
+
                 Log.d("onclick -->", "sign in button");
                 Passwordchecker passwordchecker = new Passwordchecker();
                 try {
                     loginchecker(passwordchecker.execute().get());
+
+
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -76,15 +80,44 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
        public void loginchecker (String serverresponse ){
            Intent intent = new Intent(this, MainActivity.class);
             Log.d("method passwordchecker",serverresponse);
-           if(serverresponse.equals(String.valueOf(202))){
-               startActivity(intent);
 
-           }else
+
+            if(remember_Checkbox.isChecked() && serverresponse.equals(String.valueOf(202))){
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("username", Email.getText().toString());
+                editor.putString("password",Password.getText().toString());
+                editor.apply();
+                startActivity(intent);
+
+            }else if(serverresponse.equals(String.valueOf(202))){
+                startActivity(intent);
+
+
+            }else
                Toast.makeText(this, "Wrong password",
                        Toast.LENGTH_LONG).show();
         }
 
+    public void getData() {
+//        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+//        String username = pref.getString("username","");
+//        String password = pref.getString("password","");
+//
+//        Log.d("username getdata method", username);
+//        Log.d("password getdata method", password);
+//
+//        if(!username.equalsIgnoreCase("") || !password.equalsIgnoreCase("")){
+//           Intent intent = new Intent(this,MainActivity.class);
+//           startActivity(intent);
+//
+//         }
 
+
+
+
+
+    }
 
 
 
@@ -116,8 +149,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 con.connect();
                 reponse=String.valueOf(con.getResponseCode());
                 Log.d("Server response",reponse);
-
-
 
             } catch (Exception e) {
                 e.printStackTrace();

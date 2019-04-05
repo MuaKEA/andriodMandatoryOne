@@ -17,11 +17,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
-public class userRegister extends AppCompatActivity implements View.OnClickListener {
+public class userRegister extends AppCompatActivity implements View.OnClickListener  {
     Button back;
     Button register;
-    static EditText username;
-    static EditText password;
+     EditText username;
+     EditText password;
     EditText conformpassword;
 
 
@@ -98,8 +98,7 @@ public class userRegister extends AppCompatActivity implements View.OnClickListe
 
 
 
-        public static class SaveUser extends AsyncTask<String, String, String> {
-
+        public class SaveUser extends AsyncTask<String, String, String> {
 
 
             String username2 = username.getText().toString();

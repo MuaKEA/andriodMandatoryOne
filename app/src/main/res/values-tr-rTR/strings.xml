@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mandatoryassignment</string>
+    <string name="welcome_message">Hoşgeldiniz, lütfen giriş yapın ya da kulübe üye olun.</string>
+    <string name="email">Email</string>
+    <string name="pass_word">parola</string>
+    <string name="register">basvurmasine</string>
+</resources>

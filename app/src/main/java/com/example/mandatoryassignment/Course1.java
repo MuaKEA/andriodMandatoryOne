@@ -56,12 +56,12 @@ public class Course1 extends AppCompatActivity implements RatingBar.OnRatingBarC
     }
 
     public void setup(){
-        StarRatingtxt1=findViewById(R.id.T1);
-        StarRatingtxt2=findViewById(R.id.T2);
-        StarRatingtxt3=findViewById(R.id.T3);
-        StarRatingtxt4=findViewById(R.id.T4);
-        StarRatingtxt5=findViewById(R.id.T5);
-        StarRatingtxt6=findViewById(R.id.T6);
+        StarRatingtxt1 = findViewById(R.id.T1);
+        StarRatingtxt2 = findViewById(R.id.T2);
+        StarRatingtxt3 = findViewById(R.id.T3);
+        StarRatingtxt4 = findViewById(R.id.T4);
+        StarRatingtxt5 = findViewById(R.id.T5);
+        StarRatingtxt6 = findViewById(R.id.T6);
 
         StarRating1=findViewById(R.id.ratingBar1);
         StarRating2=findViewById(R.id.ratingBar2);
