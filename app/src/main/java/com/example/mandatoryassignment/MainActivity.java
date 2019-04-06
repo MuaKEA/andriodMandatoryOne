@@ -1,13 +1,18 @@
 package com.example.mandatoryassignment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,9 +28,10 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 
-public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
+public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener, View.OnClickListener   {
     MyRecyclerViewAdapter adapter;
     static ArrayList<String>teachers;
+    Button signout;
 
 
     @Override
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // data to populate the RecyclerView with
+        init();
+        signout.setOnClickListener(this);
         teachers = new ArrayList<>();
         Serverconnector();
 
@@ -48,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         recyclerView.setAdapter(adapter);
 
 
+
+    }
+
+    private void init() {
+    signout=findViewById(R.id.signout);
 
     }
 
@@ -81,7 +94,31 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
 
     }
 
+    @Override
+    public void onClick(View v) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        alertDialog.setTitle("Logout"); // Sets title for your alertbox
+        alertDialog.setMessage("Are you sure you want to Logout ?"); // Message to be displayed on alertbox
 
+
+        /* When positive (yes/ok) is clicked */
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+                pref.edit().clear().apply();
+                Toast.makeText(MainActivity.this,"Successfully Logged Out", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        /* When negative (No/cancel) button is clicked*/
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alertDialog.show();
+    }
 
 
     public static class servercall extends AsyncTask<String, String, String> {

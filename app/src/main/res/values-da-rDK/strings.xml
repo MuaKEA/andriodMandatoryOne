@@ -4,5 +4,5 @@
     <string name="welcome_message">velkommen, venligst log ind eller tilmeld dig for at blive medlem af klubben</string>
     <string name="email">Email</string>
     <string name="pass_word">kodeord</string>
-    <string name="register">registere</string>
+    <string name="register">register</string>
 </resources>

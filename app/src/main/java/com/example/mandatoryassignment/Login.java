@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     CheckBox remember_Checkbox;
     Button Login;
     Button Register;
-
+    String Tag="Login-->";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             case R.id.Sign_in:
 
-                Log.d("onclick -->", "sign in button");
+                Log.d(Tag, "sign in button");
                 Passwordchecker passwordchecker = new Passwordchecker();
                 try {
                     loginchecker(passwordchecker.execute().get());
@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
        public void loginchecker (String serverresponse ){
            Intent intent = new Intent(this, MainActivity.class);
-            Log.d("method passwordchecker",serverresponse);
+            Log.d(Tag,serverresponse);
 
 
             if(remember_Checkbox.isChecked() && serverresponse.equals(String.valueOf(200))){
@@ -100,18 +100,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
 
     public void getData() {
-//        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-//        String username = pref.getString("username","");
-//        String password = pref.getString("password","");
-//
-//        Log.d("username getdata method", username);
-//        Log.d("password getdata method", password);
-//
-//        if(!username.equalsIgnoreCase("") || !password.equalsIgnoreCase("")){
-//           Intent intent = new Intent(this,MainActivity.class);
-//           startActivity(intent);
-//
-//         }
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        String username = pref.getString("username","");
+        String password = pref.getString("password","");
+        Log.d(Tag,username);
+        Log.d(Tag,password);
+
+
+        if(!username.equalsIgnoreCase("") || !password.equalsIgnoreCase("")){
+
+           Intent intent = new Intent(this,MainActivity.class);
+           startActivity(intent);
+
+         }
 
 
 
