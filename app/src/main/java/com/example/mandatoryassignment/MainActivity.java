@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
 
 
     public static class servercall extends AsyncTask<String, String, String> {
-        ArrayList<String> coursesList= new ArrayList<>();
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -148,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
                 reponse=bf.readLine();
 
 
-                Log.d(" dointeachers size->","method");
             } catch (Exception e) {
                 e.printStackTrace();
 
