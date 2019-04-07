@@ -15,6 +15,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -58,11 +59,10 @@ public class userlocation extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap; //læs documentation
-        mMap.clear(); //fjerner alle de existerende pins som findes på map
+        mMap.clear(); //fjerner alle de existerende pins som findes på map, logic ellers vil alle pinsenede blive siddende
         LatLng location = new LatLng(Latitude, Longitude); //her definere vi længde og bredegrad
         mMap.addMarker(new MarkerOptions().position(location).title(name)); // sætter en pin på location^
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location)); // her rykker kortet til selve location i center
-
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(location),5000,null); // her rykker kortet til selve location i center
     }
 
 
@@ -91,7 +91,7 @@ public class userlocation extends FragmentActivity implements OnMapReadyCallback
             }
         }
          // tager sig af map life cycle(autogenret af andrio studio)
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map); //
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         //håndtere ændringer i kortet osv. (autogeneret)
         mapFragment.getMapAsync(this);
     }
