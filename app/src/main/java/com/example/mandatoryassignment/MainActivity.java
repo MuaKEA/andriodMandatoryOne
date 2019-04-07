@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
             public void onClick(DialogInterface dialog,int which) {
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
                 pref.edit().clear().apply();
+
                 Toast.makeText(MainActivity.this,"Successfully Logged Out", Toast.LENGTH_LONG).show();
                 finish();
             }

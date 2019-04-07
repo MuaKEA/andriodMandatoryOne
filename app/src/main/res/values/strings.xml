@@ -4,4 +4,5 @@
     <string name="pass_word">password</string>
     <string name="register">Register</string>
     <string name="welcome_message">welcome please sign in or register to join the club</string>
+    <string name="title_activity_userlocation">Map</string>
 </resources>

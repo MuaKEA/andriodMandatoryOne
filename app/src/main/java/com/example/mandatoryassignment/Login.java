@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
        public void loginchecker (String serverresponse ){
-           Intent intent = new Intent(this, MainActivity.class);
+           Intent intent = new Intent(this, Menu.class);
             Log.d(Tag,serverresponse);
 
 
@@ -109,7 +109,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         if(!username.equalsIgnoreCase("") || !password.equalsIgnoreCase("")){
 
-           Intent intent = new Intent(this,MainActivity.class);
+           Intent intent = new Intent(this,Menu.class);
            startActivity(intent);
 
          }
